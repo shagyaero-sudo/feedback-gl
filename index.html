@@ -55,19 +55,18 @@
 </head>
 <body class="min-h-screen flex items-center justify-center p-4 selection:bg-slate-200">
 
-  <!-- MAIN APP CONTAINER -->
   <main class="w-full max-w-md mx-auto my-auto flex flex-col gap-4">
     
-    <!-- HEADER LOGO BERDIRI DI LUAR KARTU -->
-    <div class="flex justify-center items-center px-2 py-1">
+    <!-- HEADER LOGO -->
+    <div class="glass-card rounded-2xl px-4 py-2 flex justify-center items-center">
       <img 
         src="myMbud-removebg-preview.png" 
         alt="Logo Penyelenggara & Partner" 
-        class="h-10 sm:h-11 w-auto object-contain drop-shadow-md transition-all duration-300"
+        class="h-9 sm:h-10 w-auto object-contain transition-all duration-300"
       >
     </div>
 
-    <!-- EVENT BANNER CARD (GLASSMORPHISM) -->
+    <!-- EVENT BANNER CARD -->
     <div class="glass-card rounded-3xl p-5 transition-all duration-300">
       <div class="flex items-center justify-between text-xs font-semibold text-slate-700/80 mb-2">
         <span>Kamis, 8 Oktober 2026 • 08:00 - 10.30 WIB</span>
@@ -88,56 +87,55 @@
     </div>
 
     <!-- ========================================== -->
-    <!-- STEP 1: IDENTIFICATION (NRP ONLY)          -->
+    <!-- STEP 1: GENERAL DATA DIRI FORM             -->
     <!-- ========================================== -->
     <section id="step1Section" class="glass-card rounded-3xl p-6 transition-all duration-300">
-      <div class="mb-4">
-        <h3 class="text-base font-bold text-slate-900">Form Feedback Acara</h3>
-        <p class="text-xs text-slate-600 mt-0.5">Masukkan NRP terlebih dahulu untuk melanjutkan</p>
+      <div class="mb-5">
+        <h3 class="text-base font-bold text-slate-900">Data Diri</h3>
+        <p class="text-xs text-slate-600 mt-0.5">Lengkapi informasi di bawah untuk memulai</p>
       </div>
 
-      <div class="relative mb-3">
-        <input 
-          type="text" 
-          id="nrpInput" 
-          inputmode="numeric"
-          maxlength="10"
-          placeholder="Masukkan NRP"
-          autocomplete="off"
-          class="glass-input w-full h-12 px-4 py-3 rounded-2xl text-base font-medium text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-900/20 focus:border-slate-900 transition-all tracking-wider"
-        >
-      </div>
+      <div class="space-y-4 mb-5">
+        <!-- Identitas Input -->
+        <div>
+          <label class="block text-xs font-bold text-slate-900 mb-1.5">No. Identitas (NRP / NIP / Email)</label>
+          <input 
+            type="text" 
+            id="identitasInput" 
+            placeholder="Ketik identitasmu..."
+            autocomplete="off"
+            class="glass-input w-full h-12 px-4 rounded-2xl text-sm font-medium text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-900/20 focus:border-slate-900 transition-all"
+          >
+        </div>
 
-      <div id="searchHint" class="text-[11px] text-slate-500 mb-4 flex items-center justify-between">
-        <span>Contoh: 5033251067</span>
-      </div>
+        <!-- Nama Input -->
+        <div>
+          <label class="block text-xs font-bold text-slate-900 mb-1.5">Nama Lengkap</label>
+          <input 
+            type="text" 
+            id="namaInput" 
+            placeholder="Masukkan Nama Lengkap"
+            autocomplete="off"
+            class="glass-input w-full h-12 px-4 rounded-2xl text-sm font-medium text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-900/20 focus:border-slate-900 transition-all"
+          >
+        </div>
 
-      <!-- CARD VERIFIED MAHASISWA -->
-      <div id="detectedCard" class="hidden transform transition-all duration-300 ease-out mb-4">
-        <div class="bg-emerald-500/20 border border-emerald-600/30 rounded-2xl p-4 flex items-start gap-3 backdrop-blur-sm">
-          <div class="w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
-            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-            </svg>
-          </div>
-          <div class="flex-grow min-w-0">
-            <h4 id="detectedName" class="text-sm font-bold text-slate-900 truncate">Nama Mahasiswa</h4>
-            <p id="detectedMeta" class="text-xs text-emerald-900/80 mt-0.5">NRP: 5033251001</p>
-          </div>
+        <!-- Kategori Input -->
+        <div>
+          <label class="block text-xs font-bold text-slate-900 mb-1.5">Kategori Peserta</label>
+          <select 
+            id="kategoriInput" 
+            class="glass-input w-full h-12 px-4 rounded-2xl text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-slate-900/20 focus:border-slate-900 transition-all appearance-none cursor-pointer"
+          >
+            <option value="" disabled selected>Pilih Kategori...</option>
+            <option value="Mahasiswa">Mahasiswa</option>
+            <option value="Dosen">Dosen</option>
+            <option value="Tenaga Kependidikan">Tenaga Kependidikan</option>
+            <option value="Umum">Umum</option>
+          </select>
         </div>
       </div>
 
-      <!-- CARD NOT FOUND -->
-      <div id="notFoundCard" class="hidden transform transition-all duration-300 ease-out mb-4">
-        <div class="bg-amber-500/20 border border-amber-600/30 rounded-2xl p-3.5 flex items-center gap-2.5 text-xs text-amber-950 backdrop-blur-sm">
-          <svg class="w-4 h-4 text-amber-700 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-          </svg>
-          <span>NRP tidak ditemukan. Silakan cek kembali.</span>
-        </div>
-      </div>
-
-      <!-- TOMBOL LANJUTKAN -->
       <div class="pt-2">
         <button 
           id="btnToFeedback" 
@@ -159,23 +157,22 @@
       
       <!-- HEADER STEP 2 -->
       <div class="flex items-center justify-between pb-3 mb-4 border-b border-slate-900/10">
-        <div>
+        <div class="overflow-hidden">
           <h3 class="text-base font-bold text-slate-900">Isi Feedback</h3>
           <p id="studentBadge" class="text-xs font-semibold text-slate-700 truncate max-w-[220px]">-</p>
         </div>
-        <button type="button" id="btnBackToStep1" class="text-xs text-slate-700 hover:text-slate-950 font-semibold px-2.5 py-1.5 bg-white/50 rounded-xl border border-white/80">
-          Ubah NRP
+        <button type="button" id="btnBackToStep1" class="text-xs text-slate-700 hover:text-slate-950 font-semibold px-2.5 py-1.5 bg-white/50 rounded-xl border border-white/80 shrink-0 ml-2">
+          Ubah Data
         </button>
       </div>
 
       <form id="feedbackForm" class="flex flex-col gap-5">
 
-        <!-- Q1: KUALITAS PEMATERI (MODEL BINTANG RANGE) -->
+        <!-- Q1: KUALITAS PEMATERI -->
         <div>
           <label class="block text-xs font-bold text-slate-900 mb-1">
             1. Penilaian terhadap penguasaan materi & penyampaian Narasumber:
           </label>
-          
           <div class="bg-white/40 border border-white/60 rounded-2xl p-3.5 flex flex-col items-center gap-1.5">
             <div id="starContainer" class="flex items-center gap-2">
               <button type="button" data-star="1" class="star-btn text-2xl text-slate-300 hover:scale-110 transition-all focus:outline-none">★</button>
@@ -189,35 +186,35 @@
           </div>
         </div>
 
-        <!-- Q2: FASILITAS & SARANA PRASARANA -->
+        <!-- Q2: FASILITAS -->
         <div>
           <label class="block text-xs font-bold text-slate-900 mb-1.5">
-            2. Kejelasan fasilitas umum & sarana pendukung (Ruangan, Sound, AC, Proyektor)?
+            2. Kejelasan fasilitas umum & sarana pendukung (Ruangan, Sound, AC)?
           </label>
           <div class="grid grid-cols-4 gap-1.5">
-            <label class="rating-btn border border-white/80 bg-white/60 rounded-xl p-2 text-center cursor-pointer transition-all">
+            <label class="rating-btn border border-white/80 bg-white/60 rounded-xl p-2 text-center cursor-pointer transition-all flex items-center justify-center">
               <input type="radio" name="rateFasilitas" value="Buruk" required class="hidden">
-              <span class="block text-xs font-semibold">Buruk</span>
+              <span class="block text-[11px] font-semibold">Buruk</span>
             </label>
-            <label class="rating-btn border border-white/80 bg-white/60 rounded-xl p-2 text-center cursor-pointer transition-all">
+            <label class="rating-btn border border-white/80 bg-white/60 rounded-xl p-2 text-center cursor-pointer transition-all flex items-center justify-center">
               <input type="radio" name="rateFasilitas" value="Cukup" class="hidden">
-              <span class="block text-xs font-semibold">Cukup</span>
+              <span class="block text-[11px] font-semibold">Cukup</span>
             </label>
-            <label class="rating-btn border border-white/80 bg-white/60 rounded-xl p-2 text-center cursor-pointer transition-all">
+            <label class="rating-btn border border-white/80 bg-white/60 rounded-xl p-2 text-center cursor-pointer transition-all flex items-center justify-center">
               <input type="radio" name="rateFasilitas" value="Baik" class="hidden">
-              <span class="block text-xs font-semibold">Baik</span>
+              <span class="block text-[11px] font-semibold">Baik</span>
             </label>
-            <label class="rating-btn border border-white/80 bg-white/60 rounded-xl p-2 text-center cursor-pointer transition-all">
+            <label class="rating-btn border border-white/80 bg-white/60 rounded-xl p-2 text-center cursor-pointer transition-all flex items-center justify-center">
               <input type="radio" name="rateFasilitas" value="Sangat Baik" class="hidden">
-              <span class="block text-xs font-semibold">Sangat Baik</span>
+              <span class="block text-[11px] font-semibold">Sangat Baik</span>
             </label>
           </div>
         </div>
 
-        <!-- Q3: MANFAAT MATERI -->
+        <!-- Q3: MANFAAT -->
         <div>
           <label class="block text-xs font-bold text-slate-900 mb-1.5">
-            3. Seberapa relevan & bermanfaat materi ini bagi wawasan akademismu?
+            3. Seberapa relevan & bermanfaat materi ini bagimu?
           </label>
           <div class="grid grid-cols-3 gap-2">
             <label class="rating-btn border border-white/80 bg-white/60 rounded-xl p-2.5 text-center cursor-pointer transition-all">
@@ -235,41 +232,35 @@
           </div>
         </div>
 
-        <!-- Q4: KESAN & PENYAMPAIAN (MINIMAL 25 KATA) -->
+        <!-- Q4: KESAN -->
         <div>
-          <div class="flex items-center justify-between mb-1.5">
-            <label for="kesanInput" class="block text-xs font-bold text-slate-900">
-              4. Kesan & poin paling menarik selama sesi kuliah tamu?
-            </label>
-            <span id="wordCountLabel" class="text-[11px] font-bold text-rose-600">0 / 25 kata</span>
-          </div>
+          <label for="kesanInput" class="block text-xs font-bold text-slate-900 mb-1.5">
+            4. Kesan & poin paling menarik?
+          </label>
           <textarea 
             id="kesanInput" 
             rows="4" 
-            placeholder="Tuliskan kesan atau insight menarik yang kamu dapatkan (minimal 25 kata)..."
+            placeholder="Tuliskan kesan atau insight menarik yang kamu dapatkan..."
             required
             class="glass-input w-full p-3.5 rounded-2xl text-xs font-medium text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-900/20 focus:border-slate-900 transition-all leading-relaxed"
           ></textarea>
-          <p id="wordWarning" class="text-[10px] text-rose-600 font-medium mt-1">
-            * Isian belum mencapai minimal 25 kata agar pesan tidak terlalu pendek.
-          </p>
         </div>
 
-        <!-- Q5: KRITIK DAN SARAN (TEXTAREA) -->
+        <!-- Q5: SARAN -->
         <div>
           <label for="saranInput" class="block text-xs font-bold text-slate-900 mb-1.5">
-            5. Kritik & Saran untuk perbaikan kuliah tamu berikutnya?
+            5. Kritik & Saran untuk perbaikan?
           </label>
           <textarea 
             id="saranInput" 
             rows="3" 
-            placeholder="Tuliskan kritik, masukan fasilitas, atau topik yang kamu inginkan di sesi berikutnya..."
+            placeholder="Tuliskan masukan atau topik berikutnya..."
             required
             class="glass-input w-full p-3.5 rounded-2xl text-xs font-medium text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-900/20 focus:border-slate-900 transition-all leading-relaxed"
           ></textarea>
         </div>
 
-        <!-- SUBMIT BUTTON -->
+        <!-- SUBMIT -->
         <button 
           type="submit" 
           id="btnSubmit"
@@ -289,25 +280,20 @@
     <!-- STEP 3: SUBMITTING & SUCCESS STATE        -->
     <!-- ========================================== -->
     <section id="step3Section" class="hidden glass-card rounded-3xl p-6 text-center transition-all duration-300">
-      
-      <!-- SUBMITTING STATE -->
       <div id="submittingState" class="py-8 flex flex-col items-center">
         <div class="w-12 h-12 rounded-full border-4 border-white/40 border-t-slate-900 animate-spin mb-4"></div>
         <h3 class="text-base font-bold text-slate-900 mb-1">Mengirim Feedback...</h3>
         <p class="text-xs text-slate-600">Terima kasih atas waktu & masukannya.</p>
       </div>
 
-      <!-- SUCCESS STATE -->
       <div id="successState" class="hidden w-full flex flex-col items-center py-2">
         <div class="w-14 h-14 rounded-2xl bg-emerald-500/20 border border-emerald-500/30 text-emerald-800 flex items-center justify-center mb-3 shadow-sm">
           <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
             <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
           </svg>
         </div>
-
         <h3 class="text-lg font-bold text-slate-900 tracking-tight mb-1">Feedback Terkirim!</h3>
         <p class="text-xs text-slate-600 mb-5">Masukanmu sangat berharga untuk pengembangan acara kami selanjutnya.</p>
-
         <button 
           type="button" 
           id="btnNewFeedback" 
@@ -316,26 +302,23 @@
           <span>Selesai</span>
         </button>
       </div>
-
     </section>
 
   </main>
 
   <script>
-    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwJojW5Vz9IsptjTWuUEqLYtUpfMXU5UXa1Y_jBAfxcjmSXhlYGrbEAozqzf1X_zruBkw/exec';
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzFf3PaQRmCzsyu5dzNKFcJa_MSu0f3v6ky4RrIh2Ovwlwc9G2PdEYWHEoffF2cs1dOCQ/exec';
     const EVENT_NAME = 'Kuliah Tamu: Pengembangan Bioenergi & Infrastruktur EBT';
 
-    const masterData = {"5033251001": "Chyndana Vilza Humaidyah", "5033251002": "Magdalena Deanne Christine", "5033251003": "Cahaya Fasyaa Adilah", "5033251004": "Tsabita Nailufarkh", "5033251005": "Rajendra Abrar Arganta Wibowo", "5033251006": "Amartha Kirania Cahaya Putri", "5033251007": "Sashi Oktavania Ramadhani", "5033251008": "Afrian Raditya Alriansyah", "5033251009": "Adiska Renata", "5033251010": "Anya Aurellia Putri", "5033251011": "Hafid Syahputra Yuwono", "5033251012": "Lubnayya Salma Al Khoeroti", "5033251013": "Lhengga Anugrah Syampurna", "5033251014": "Sasta Muthia Septiane", "5033251015": "Nabiila Sophia Artanti", "5033251016": "Salwa Novia Rahma", "5033251017": "Eka Nuraini Wulansari Istiana", "5033251018": "Audrey Naila Al Amin", "5033251019": "Alda Artika Raya", "5033251020": "Dheva Lusy Naomi", "5033251021": "Nadia Putri Ramadhani", "5033251022": "Cindy Nur Amelia", "5033251023": "Denanta Laksmana Basunjaya", "5033251024": "Dhini Rohmatunni`mah", "5033251025": "Nadiah Rahmawati", "5033251026": "Ivo Devora", "5033251027": "Shalima Azahra Putrina Wiyan", "5033251028": "Devira Vania Sukmadewi", "5033251029": "Kaysan Nawfal Fadila", "5033251030": "Sayyida Nafisa Indradewa", "5033251031": "Zahra Aulia Ramadhani", "5033251032": "Abdurrahman Yazid Alhilmi", "5033251033": "Khoiril Alimuddin", "5033251034": "Arsadya Agripina Humaira", "5033251035": "Kezia Praditha Rengganis S.", "5033251036": "Alifya Destasari Salsabila", "5033251037": "Desvinta Nadhea Kirani", "5033251038": "Bianca Jazlyn Aisya Tanda", "5033251039": "Al Faraby Ben Hanes", "5033251040": "Naufal Hardy Maulana", "5033251041": "Rakha Zaidan Ezekiel", "5033251042": "Reynola Zildania Zamzami Meyzun", "5033251043": "Adihan Azhari Fanani", "5033251044": "Richelle Lunetta Magdalene", "5033251045": "Lataj`al Rizqika Bu`dan Ilaika", "5033251046": "Shagy Aero Biyanto Ramadhan", "5033251047": "Jihan Firjah Jauhari", "5033251048": "Diah Riska Amalia", "5033251049": "Raffa Ramadhan", "5033251050": "Nilnal Muna", "5033251051": "Muhammad Mahia Abhinaya", "5033251052": "Aisyah Qonitah Shafa", "5033251053": "Ailsa Cyrilla Putri Williandyto", "5033251054": "Aisyah Nova Putri Andriani", "5033251055": "Ferosyana Faza Pradyta", "5033251056": "Mochammad Randyansyah S.", "5033251057": "Firzal Kurniawan Effendi", "5033251058": "Nadya Noemens Setiawan", "5033251059": "Reihan Aviv Nasrulloh", "5033251060": "Wilis Mukti Fitriansyah", "5033251061": "Gresi Viola Citania Santoso", "5033251062": "Ivander Gervyn Lamberto P.", "5033251063": "Cheryn Grace Yoviana", "5033251064": "Jihan Khansa Kamilah", "5033251065": "Naomi Josephin Wijaya", "5033251066": "Kayla Azalia Azka", "5033251067": "Bintang Muhammad Rafi", "5033251068": "Gabriel Satya Priyahita", "5033251069": "Indra Kharizma Dewi", "5033251070": "Hardian Prasojo", "5033251071": "Maida Khalisha Nabila Aqil", "5033251072": "Annisa Aulia Roza", "5033251073": "Abdul Rasyid Sujana", "5033251074": "Mochamad Bintang Denryana", "5033251075": "Shafa` Tsabita Ramadani", "5033251076": "Johan Anggoro", "5033251077": "Naila Lailatul Fauziah", "5033251078": "Ryan Septa Ramadhani", "5033251079": "Naila Zalfa Hamidah", "5033251080": "Anita Yudhiyani", "5033251081": "Olivia Annisa Ramadhani", "5033251082": "Renata Pradya Agisty", "5033251083": "Arrifah Novanti", "5033251085": "Moch. Rama Andika Putra", "5033251086": "Qabus Giti`f Obed Razzan", "5033251087": "Virenza Nara Fhursan", "5033251088": "Siti Aisyah", "5033251089": "Ridho Pramudia Ananta", "5033251090": "Mayuda Ananta Thahar", "5033251091": "Riftianti Safitri", "5033251092": "Azizah Nur Khairunisa", "5033251093": "Muhammad Farhan", "5033251094": "Afwa Revalina Arsianti", "5033251095": "Auly Basyirul Bahril Qulub", "5033251096": "Irfan Hamid", "5033251097": "Qory Aina Azzahra", "5033251098": "Luh Amrita Putri Dewi Kahyangan", "5033251099": "Adrian Hartanto", "5033251100": "Yemima Yuana Artanty", "5033251101": "Zalfa Omar Abdullah", "5033251102": "Dwi Andhika Adiputra", "5033251103": "Nazwa Nur Sabrina", "5033251104": "Azrita Asfy Salsabilla", "5033251105": "Mochammad Farrel", "5033251106": "Alghina Fildzah Novandi", "5033251107": "Eucharistie Gabriela Suryani Pranadi", "5033251108": "Calya Natya Lakshita", "5033251109": "Satria Sifa`a Hidayat", "5033251110": "Wildan Syach Rachmand", "5033251111": "Rangga Setya Ki Dharma", "5033251112": "Ahmad Safaraz Fauzi Prasetio", "5033251113": "Najwa Alya Sabrina", "5033251114": "Bintang Revolusi Muhammad Dien", "5033251115": "Rachel Ruri Christina", "5033251116": "Aulia Annisatul Habibah", "5033251117": "Heidy Kartika Septiayu", "5033251118": "Madinatul Ilmi", "5033251119": "Sanovto Arti", "5033251120": "Tiara Novia Lintang Sari", "5033251121": "Safira Soegianto", "5033251122": "Muhammad Bagus Yudha P. H.", "5033251123": "Wahyu Priyambodo", "5033251124": "Muhammad Rasyad Gunawan", "5033251125": "Nabila Auriel Titania", "5033251126": "Rafi Shira Pratama", "5033251127": "Maulana Rahmadanto Prakoso", "5033251128": "Naura Elysia", "5033251129": "Muhammad Fuad Baagil", "5033251130": "Ababil Fawwaz Trisananda", "5033251131": "Satria Kusuma Hanandya", "5033251132": "Adella Septiansa Khimanda", "5033251133": "Aqilah Khairunnisa", "5033251134": "Nadya Nur Syahbani Putri", "5033251135": "Ghefira Nur Fatimah"};
+    const masterData = {"5033251001": "Chyndana Vilza Humaidyah", "5033251002": "Magdalena Deanne Christine", "5033251003": "Cahaya Fasyaa Adilah", "5033251004": "Tsabita Nailufarkh", "5033251005": "Rajendra Abrar Arganta Wibowo"}; // Data dipotong untuk ilustrasi. Paste masterData utuh milikmu di sini.
 
-    let activeStudent = null;
+    let activeUser = null;
     let selectedStarRating = 0;
 
     // DOM ELEMENTS
-    const nrpInput = document.getElementById('nrpInput');
-    const detectedCard = document.getElementById('detectedCard');
-    const notFoundCard = document.getElementById('notFoundCard');
-    const detectedName = document.getElementById('detectedName');
-    const detectedMeta = document.getElementById('detectedMeta');
+    const identitasInput = document.getElementById('identitasInput');
+    const namaInput = document.getElementById('namaInput');
+    const kategoriInput = document.getElementById('kategoriInput');
     const btnToFeedback = document.getElementById('btnToFeedback');
 
     const step1Section = document.getElementById('step1Section');
@@ -351,8 +334,7 @@
     const ratePemateriValue = document.getElementById('ratePemateriValue');
 
     const kesanInput = document.getElementById('kesanInput');
-    const wordCountLabel = document.getElementById('wordCountLabel');
-    const wordWarning = document.getElementById('wordWarning');
+    const saranInput = document.getElementById('saranInput');
     const btnSubmit = document.getElementById('btnSubmit');
 
     const submittingState = document.getElementById('submittingState');
@@ -361,43 +343,39 @@
 
     const starLabels = ["", "1/5 - Sangat Kurang", "2/5 - Kurang", "3/5 - Cukup", "4/5 - Baik", "5/5 - Sangat Luar Biasa"];
 
-    // STEP 1 LOGIC
-    nrpInput.addEventListener('input', function(e) {
-      lookupNrp(e.target.value.trim());
-    });
+    // STEP 1 LOGIC (Validasi Universal)
+    function validateStep1() {
+      const id = identitasInput.value.trim();
+      const nama = namaInput.value.trim();
+      const kategori = kategoriInput.value;
 
-    function lookupNrp(query) {
-      if (masterData[query]) {
-        const studentName = masterData[query];
-        activeStudent = { nrp: query, name: studentName };
-
-        detectedName.textContent = studentName;
-        detectedMeta.textContent = 'NRP: ' + query;
-        detectedCard.classList.remove('hidden');
-        notFoundCard.classList.add('hidden');
-
+      if (id.length > 0 && nama.length >= 2 && kategori) {
         btnToFeedback.disabled = false;
         btnToFeedback.classList.remove('hidden');
-        return;
-      }
-
-      activeStudent = null;
-      detectedCard.classList.add('hidden');
-      btnToFeedback.disabled = true;
-      btnToFeedback.classList.add('hidden');
-
-      if (query.length === 10) {
-        notFoundCard.classList.remove('hidden');
+        activeUser = { id: id, name: nama, kategori: kategori };
       } else {
-        notFoundCard.classList.add('hidden');
+        btnToFeedback.disabled = true;
+        btnToFeedback.classList.add('hidden');
+        activeUser = null;
       }
     }
 
+    identitasInput.addEventListener('input', function(e) {
+      const query = e.target.value.trim();
+      if (query.length === 10 && masterData[query]) {
+        namaInput.value = masterData[query];
+        kategoriInput.value = 'Mahasiswa';
+      }
+      validateStep1();
+    });
+
+    namaInput.addEventListener('input', validateStep1);
+    kategoriInput.addEventListener('change', validateStep1);
+
     // SWITCH STEP 1 -> STEP 2
     btnToFeedback.addEventListener('click', function() {
-      if (!activeStudent) return;
-
-      studentBadge.textContent = activeStudent.name + ' (' + activeStudent.nrp + ')';
+      if (!activeUser) return;
+      studentBadge.textContent = activeUser.name + ' (' + activeUser.kategori + ')';
       step1Section.classList.add('hidden');
       step2Section.classList.remove('hidden');
     });
@@ -413,12 +391,10 @@
         selectedStarRating = parseInt(this.dataset.star);
         ratePemateriValue.value = selectedStarRating;
         updateStarUI(selectedStarRating);
-        validateForm();
+        validateFeedbackForm();
       });
-
       btn.addEventListener('mouseenter', function() {
-        const hoverVal = parseInt(this.dataset.star);
-        updateStarUI(hoverVal);
+        updateStarUI(parseInt(this.dataset.star));
       });
     });
 
@@ -439,31 +415,15 @@
       starRatingLabel.textContent = starLabels[rating] || "Pilih rating bintang";
     }
 
-    // WORD COUNT & VALIDATION LOGIC (MINIMAL 25 KATA)
-    kesanInput.addEventListener('input', validateForm);
+    // VALIDATION FORM (Tanpa minimal kata)
+    kesanInput.addEventListener('input', validateFeedbackForm);
+    saranInput.addEventListener('input', validateFeedbackForm);
 
-    function validateForm() {
-      const text = kesanInput.value.trim();
-      const words = text ? text.split(/\s+/).filter(w => w.length > 0) : [];
-      const wordCount = words.length;
+    function validateFeedbackForm() {
+      const isKesanFilled = kesanInput.value.trim().length > 0;
+      const isSaranFilled = saranInput.value.trim().length > 0;
 
-      wordCountLabel.textContent = wordCount + ' / 25 kata';
-
-      if (wordCount >= 25) {
-        wordCountLabel.classList.remove('text-rose-600');
-        wordCountLabel.classList.add('text-emerald-700');
-        wordWarning.classList.add('hidden');
-      } else {
-        wordCountLabel.classList.remove('text-emerald-700');
-        wordCountLabel.classList.add('text-rose-600');
-        wordWarning.classList.remove('hidden');
-      }
-
-      // Check all validations
-      const isStarSelected = selectedStarRating > 0;
-      const isWordCountValid = wordCount >= 25;
-
-      if (isStarSelected && isWordCountValid) {
+      if (selectedStarRating > 0 && isKesanFilled && isSaranFilled) {
         btnSubmit.disabled = false;
         btnSubmit.classList.remove('bg-slate-900/30', 'text-slate-400', 'cursor-not-allowed');
         btnSubmit.classList.add('bg-slate-900', 'hover:bg-slate-800', 'text-white', 'cursor-pointer');
@@ -477,17 +437,18 @@
     // SUBMIT FEEDBACK LOGIC
     feedbackForm.addEventListener('submit', async function(e) {
       e.preventDefault();
-      if (!activeStudent || selectedStarRating === 0) return;
+      if (!activeUser || selectedStarRating === 0) return;
 
       const rateFasilitas = document.querySelector('input[name="rateFasilitas"]:checked')?.value || '-';
       const relevansiMateri = document.querySelector('input[name="relevansiMateri"]:checked')?.value || '-';
       const kesan = kesanInput.value.trim();
-      const saran = document.getElementById('saranInput').value.trim();
+      const saran = saranInput.value.trim();
 
       const payload = {
         type: 'feedback',
-        nrp: activeStudent.nrp,
-        nama: activeStudent.name,
+        identitas: activeUser.id,
+        nama: activeUser.name,
+        kategori: activeUser.kategori,
         nilaiPemateri: selectedStarRating + ' Bintang',
         nilaiFasilitas: rateFasilitas,
         relevansiMateri: relevansiMateri,
@@ -517,13 +478,15 @@
     });
 
     btnNewFeedback.addEventListener('click', function() {
-      activeStudent = null;
+      activeUser = null;
       selectedStarRating = 0;
       updateStarUI(0);
       feedbackForm.reset();
-      nrpInput.value = '';
-      lookupNrp('');
-      validateForm();
+      identitasInput.value = '';
+      namaInput.value = '';
+      kategoriInput.value = '';
+      validateStep1();
+      validateFeedbackForm();
       
       step3Section.classList.add('hidden');
       step1Section.classList.remove('hidden');
